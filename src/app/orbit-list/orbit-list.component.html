@@ -6,13 +6,20 @@
         <th>Orbit Type</th>
         <th>Launch Date</th>
     </tr>
-    <tr class="data-row">
-        <td>GPS 938</td>
-        <td>Positioning</td>
-        <td>true</td>
-        <td>HIGH</td>
-        <td>2001-11-01</td>
-    </tr>
+<!-- Bonus Missions
+1) Zebra Stripes
+Alternate the color for every other row in the table. Choose whichever pair of colors you prefer, but the highlighting for space debris should still be distinct. -->
+    <tr *ngFor = "let satellite of satellites; let evenItem = even; let oddItem = odd;"
+    [class.table]="evenItem"
+    [class.odd]="oddItem"
+    >
+        <td>{{satellite.name}}</td>
+        <td [class.warning] = "satellite.isSpaceDebris()">{{satellite.type}}</td> 
+        <td>{{satellite.operational}}</td>
+        <td>{{satellite.orbitType}}</td>
+        <td>{{satellite.launchDate}}</td>
+     </tr> 
+  
 </table>
 
 <!-- TODO 2b: use *ngFor to display satellite data in the table -->
